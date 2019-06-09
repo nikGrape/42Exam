@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_power_of_2.c                                    :+:      :+:    :+:   */
+/*   reverse_bits.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vinograd <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/03 16:36:11 by vinograd          #+#    #+#             */
-/*   Updated: 2019/06/08 16:31:42 by vinograd         ###   ########.fr       */
+/*   Created: 2019/06/08 14:39:26 by vinograd          #+#    #+#             */
+/*   Updated: 2019/06/08 16:21:36 by vinograd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	    is_power_of_2(unsigned int n)
+unsigned char	reverse_bits(unsigned char octet)
 {
-	if (n % 2 == 0)
-		return (is_power_of_2(n / 2));
-	return ((n == 1) ? 1 : 0);
-}
+	int				i;
+	unsigned char	res;
 
-#include <stdio.h>
-#include <stdlib.h>
-
-int main(int argc, char **argv)
-{
-	if (argc > 1)
+	res = 0;
+	i = 0;
+	while (i < 8)
 	{
-		int i = atoi(argv[1]);
-		printf("%d\n", is_power_of_2(i));
+		res = res << 1;
+		res = res | (octet & 1);
+		octet = octet >> 1;
+		i++;
 	}
+	return (res);
 }

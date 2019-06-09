@@ -6,7 +6,7 @@
 /*   By: exam <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/04 10:57:46 by exam              #+#    #+#             */
-/*   Updated: 2019/06/04 18:06:07 by vinograd         ###   ########.fr       */
+/*   Updated: 2019/06/08 17:04:05 by vinograd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int		main(int argc, char **argv)
 		}
 		while (i > 0)
 		{
-			while (!is_low(STR[i]) && i > 0)
+			while (is_spase(STR[i]) && i > 0)
 				i--;
 			if (is_low(STR[i]))
 				STR[i--] -= 32;

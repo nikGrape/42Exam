@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_power_of_2.c                                    :+:      :+:    :+:   */
+/*   print_bits.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vinograd <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/03 16:36:11 by vinograd          #+#    #+#             */
-/*   Updated: 2019/06/08 16:31:42 by vinograd         ###   ########.fr       */
+/*   Created: 2019/06/08 14:48:59 by vinograd          #+#    #+#             */
+/*   Updated: 2019/06/08 14:59:28 by vinograd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	    is_power_of_2(unsigned int n)
-{
-	if (n % 2 == 0)
-		return (is_power_of_2(n / 2));
-	return ((n == 1) ? 1 : 0);
-}
+#include <unistd.h>
 
-#include <stdio.h>
-#include <stdlib.h>
-
-int main(int argc, char **argv)
+void	print_bits(char octet)
 {
-	if (argc > 1)
+	int i;
+	int n;
+	char res;
+
+	n = 128;
+	i = 0;
+	while (i++ < 8)
 	{
-		int i = atoi(argv[1]);
-		printf("%d\n", is_power_of_2(i));
+		res = ((octet & n) > 0) ? '1' : '0';
+		write(1, &res, 1);
+		n >>= 1;
 	}
 }

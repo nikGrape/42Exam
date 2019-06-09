@@ -1,30 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_power_of_2.c                                    :+:      :+:    :+:   */
+/*   rot_13.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vinograd <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/03 16:36:11 by vinograd          #+#    #+#             */
-/*   Updated: 2019/06/08 16:31:42 by vinograd         ###   ########.fr       */
+/*   Created: 2019/06/08 13:52:24 by vinograd          #+#    #+#             */
+/*   Updated: 2019/06/08 14:37:41 by vinograd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include <unistd.h>
 
-int	    is_power_of_2(unsigned int n)
+char	rot_13(char c)
 {
-	if (n % 2 == 0)
-		return (is_power_of_2(n / 2));
-	return ((n == 1) ? 1 : 0);
+	if ((c >= 'a' && c <= 'm') || (c >= 'A' && c <= 'M'))
+		c += 13;
+	else if ((c >= 'n' && c <= 'z') || (c >= 'N' && c <= 'Z'))
+		c -= 13;
+	return (c);
 }
 
-#include <stdio.h>
-#include <stdlib.h>
-
-int main(int argc, char **argv)
+int		main(int argc, char **argv)
 {
-	if (argc > 1)
-	{
-		int i = atoi(argv[1]);
-		printf("%d\n", is_power_of_2(i));
-	}
+	int i;
+	char ch;
+
+	i = 0;
+	if (argc == 2)
+		while (argv[1][i])
+		{
+			ch = rot_13(argv[1][i++]);
+			write(1, &ch, 1);
+		}
+	write(1, "\n", 1);
 }

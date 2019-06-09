@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_power_of_2.c                                    :+:      :+:    :+:   */
+/*   paramsum.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vinograd <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/03 16:36:11 by vinograd          #+#    #+#             */
-/*   Updated: 2019/06/08 16:31:42 by vinograd         ###   ########.fr       */
+/*   Created: 2019/06/08 17:06:22 by vinograd          #+#    #+#             */
+/*   Updated: 2019/06/08 17:14:57 by vinograd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	    is_power_of_2(unsigned int n)
-{
-	if (n % 2 == 0)
-		return (is_power_of_2(n / 2));
-	return ((n == 1) ? 1 : 0);
-}
+#include <unistd.h>
 
-#include <stdio.h>
-#include <stdlib.h>
+void	ft_putnbr(int i)
+{
+	char ch;
+
+	if (i >= 10)
+		ft_putnbr(i / 10);
+	ch = i % 10 + '0';
+	write(1, &ch, 1);
+}
 
 int main(int argc, char **argv)
 {
-	if (argc > 1)
-	{
-		int i = atoi(argv[1]);
-		printf("%d\n", is_power_of_2(i));
-	}
+	if (argv != NULL)
+		ft_putnbr(argc - 1);
+	write (1, "\n", 1);
 }
